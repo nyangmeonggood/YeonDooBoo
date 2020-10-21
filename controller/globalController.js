@@ -12,12 +12,20 @@ export const home = async (req, res) => {
   }
 };
 
-export const search = (req, res) => {
+export const search = async (req, res) => {
   const {
     query: { searchingBy },
   } = req;
-  console.log(req.query);
-  res.render("search", { searchingBy, pageName: searchingBy,videoDB });
+  let videoDB = [];
+  try {
+    videoDB = await Video.find({
+      title: { $regex: searchingBy, $options: "i" },
+    });
+    res.render("search", { searchingBy, pageName: searchingBy, videoDB });
+  } catch (error) {
+    console.log(error);
+    res.redirect(routes.home);
+  }
 };
 
 export const getJoin = (req, res) => {
@@ -25,7 +33,7 @@ export const getJoin = (req, res) => {
 };
 export const postJoin = (req, res) => {
   const {
-    body: { name, email, password, passwordConfirm },
+    body: { /*name, email,*/ password, passwordConfirm },
   } = req;
   if (password !== passwordConfirm) {
     res.status(400);

@@ -2,12 +2,17 @@ extends layouts/main.pug
 include mixins/videoBlock.pug
 
 block content
-    h2 searching by #{searchingBy}
+    h2 "#{searchingBy}"의 검색결과입니다.
 
     .searchedVideo
+        if videoDB.length === 0
+            | 검색 된 비디오가 없습니다.
         each video in videoDB
-        +videoBlock({
-            title:video.title,
-            views:video.views,
-            description:video.description
-        })
+            +videoBlock({
+                id:video.id,
+                title:video.title,
+                description:video.description,
+                videoFile:video.fileUrl,
+                views:video.views,
+                creator:video.creator
+            })

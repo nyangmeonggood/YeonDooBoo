@@ -2,6 +2,7 @@ doctype html
 html
     head
         title #{pageName} | #{siteName}
+        link(rel="stylesheet" href="../../static/main.css")
     body
         include ../partials/header.pug
 
@@ -9,3 +10,4 @@ html
             block content
         
         include ../partials/footer.pug
+        script(src="../../static/main.js")
