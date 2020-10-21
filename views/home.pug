@@ -1,0 +1,8 @@
+extends layouts/main.pug
+include ./mixins/videoBlock.pug
+
+block content
+    each video in videoDB
+        +videoBlock({
+            title:video.id
+        })
