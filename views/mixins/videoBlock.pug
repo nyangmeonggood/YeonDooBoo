@@ -1,2 +1,9 @@
 mixin videoBlock(video={})
-    h2=video.title
+    .mainVideoContainer
+        a(href=routes.videoDetail(video.id))
+            video(src=video.videoFile)
+            h2.title=video.title
+            p.description=video.description
+            ul
+                li.creator=video.creator
+                li.views=`조회수 ${video.views}회`

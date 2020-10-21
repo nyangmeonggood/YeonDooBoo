@@ -4,5 +4,10 @@ include ./mixins/videoBlock.pug
 block content
     each video in videoDB
         +videoBlock({
-            title:video.id
+            id:video.id,
+            title:video.title,
+            description:video.description,
+            videoFile:video.fileUrl,
+            views:video.views,
+            creator:video.creator
         })

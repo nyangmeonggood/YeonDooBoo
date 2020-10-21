@@ -1,0 +1,9 @@
+extends layouts/main.pug
+
+block content
+    .formContainer
+        form(action=routes.editVideo(video._id) method="post")
+            input(type="text" name="title" placeholder="제목을 입력해주세요" required=true value=video.title)
+            textarea(name="description" placeholder="설명을 입력해주세요" required=true)=video.description
+            input(type="submit" value="수정완료")
+        a(href=routes.deleteVideo(video._id)) 비디오 삭제

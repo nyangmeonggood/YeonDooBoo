@@ -1,0 +1,12 @@
+extends layouts/main.pug
+include mixins/videoBlock.pug
+
+block content
+    .videoDetailContainer
+        .videoPlayer
+            video(src=`/${video.fileUrl}`)
+        .videoInfo
+            a(href=`${routes.editVideo(video.id)}`) 동영상 수정
+            h2.title=video.title
+            span.views=`조회수 ${video.views}회`
+            p.description=video.description

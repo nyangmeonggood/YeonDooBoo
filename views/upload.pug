@@ -1,0 +1,10 @@
+extends ./layouts/main.pug
+
+block content
+    .formContainer
+        form(action=`/videos${routes.upload}` method="post" enctype="multipart/form-data")
+            label(for="file") 파일명
+            input(type="file" id="file" name="videoFile" required=true accept="video/*")
+            input(type="text" name="title" placeholder="제목을 입력해주세요" required=true)
+            textarea(name="description" placeholder="설명을 입력해주세요" required=true)
+            input(type="submit" value="동영상 올리기")
