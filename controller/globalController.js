@@ -17,7 +17,7 @@ export const search = (req, res) => {
     query: { searchingBy },
   } = req;
   console.log(req.query);
-  res.render("search", { searchingBy, pageName: searchingBy });
+  res.render("search", { searchingBy, pageName: searchingBy,videoDB });
 };
 
 export const getJoin = (req, res) => {

@@ -1,4 +1,13 @@
 extends layouts/main.pug
+include mixins/videoBlock.pug
 
 block content
     h2 searching by #{searchingBy}
+
+    .searchedVideo
+        each video in videoDB
+        +videoBlock({
+            title:video.title,
+            views:video.views,
+            description:video.description
+        })
