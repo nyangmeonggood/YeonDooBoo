@@ -1,4 +1,5 @@
 import routes from "../routes";
+import User from "../models/User.js";
 
 export const users = (req, res) => {
   res.redirect("/");
