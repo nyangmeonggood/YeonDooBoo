@@ -14,7 +14,17 @@ block content
             span.views=`조회수 ${video.views}회`
             a.creator(href=routes.userDetail(video.creator.id))=video.creator.name
             p.description=video.description
-        .video_comments
-            span.video_comment_number
+        #videoComments
+            span.videoComment
                 | 댓글 | 
-                span#jsCommentNumber=video.comments.length
+                span#videoCommentsNumber=video.comments.length
+            if loggedUser
+                form.addComment
+                    input(type="text" placeholder="댓글 추가하기")
+            ul#commentList
+                each comment in video.comments.reverse()
+                    li
+                        p=comment.text
+                        span=comment.name
+                        if loggedUser && loggedUser.id == comment.creator
+                            span.delBtn 삭제

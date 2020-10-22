@@ -9,7 +9,6 @@ export const home = async (req, res) => {
     res.render("home", { pageName: "메인", videoDB });
     console.log(req.user);
   } catch (error) {
-    console.log(error);
     res.render("home", { pageName: "메인", videoDB: [] });
   }
 };
@@ -25,7 +24,6 @@ export const search = async (req, res) => {
     });
     res.render("search", { searchingBy, pageName: searchingBy, videoDB });
   } catch (error) {
-    console.log(error);
     res.redirect(routes.home);
   }
 };
@@ -53,7 +51,6 @@ export const postJoin = async (req, res, next) => {
       await User.register(user, password);
       next();
     } catch (error) {
-      console.log(error);
       res.redirect(routes.home);
     }
   }

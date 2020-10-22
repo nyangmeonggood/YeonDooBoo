@@ -29,6 +29,8 @@
     max-width: 840px;
     height: 40px;
     .volumeBtn {
+      display: flex;
+      align-items: center;
       input {
         -webkit-appearance: none;
         background: transparent;

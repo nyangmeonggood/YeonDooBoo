@@ -25,7 +25,8 @@ const GITHUB = "/auth/github",
 
 //api
 const API = "/api",
-  REGISTER_VIEW = "/:id/view";
+  REGISTER_VIEW = "/:id/view",
+  ADD_COMMENT = "/:id/comment";
 
 const routes = {
   home: HOME,
@@ -71,6 +72,7 @@ const routes = {
   },
   api: API,
   registerView: REGISTER_VIEW,
+  addComment: ADD_COMMENT,
 };
 
 export default routes;
