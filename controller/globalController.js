@@ -5,7 +5,7 @@ import User from "../models/User.js";
 
 export const home = async (req, res) => {
   try {
-    const videoDB = await Video.find({}).sort({ _id: -1 });
+    const videoDB = await Video.find({}).populate("creator").sort({ _id: -1 });
     res.render("home", { pageName: "메인", videoDB });
     console.log(req.user);
   } catch (error) {
@@ -31,7 +31,11 @@ export const search = async (req, res) => {
 };
 
 export const getJoin = (req, res) => {
-  res.render("join", { pageName: "회원가입" });
+  if (req.user) {
+    res.redirect(routes.home);
+  } else {
+    res.render("join", { pageName: "회원가입" });
+  }
 };
 export const postJoin = async (req, res, next) => {
   const {

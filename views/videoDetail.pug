@@ -6,7 +6,13 @@ block content
         .videoPlayer
             video(src=`/${video.fileUrl}`)
         .videoInfo
-            a(href=`${routes.editVideo(video.id)}`) 동영상 수정
+            if loggedUser && video.creator.id === loggedUser.id
+                a(href=routes.editVideo(video.id)) 동영상 수정
             h2.title=video.title
             span.views=`조회수 ${video.views}회`
+            a.creator(href=routes.userDetail(video.creator.id))=video.creator.name
             p.description=video.description
+        .video_comments
+            span.video_comment_number
+                | 댓글 | 
+                span#jsCommentNumber=video.comments.length

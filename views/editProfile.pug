@@ -1,0 +1,14 @@
+extends layouts/main.pug
+
+block content
+    .formContainer
+        form(action=`/users${routes.editProfile}`, method="post", enctype="multipart/form-data")
+            .fileUpload
+                img(src=`${loggedUser.avatarUrl}`)
+                input(type="file" id="avatar" name="avatar" accept="image/*")
+            input(type="text" placeholder="이름을 입력해주세요" name="name" value=loggedUser.name)
+            input(type="email" placeholder="이메일을 입력해주세요" name="email" value=loggedUser.email)
+            input(type="password", name="oldPassword", placeholder="현재 비밀번호를 입력해주세요")
+            input(type="password", name="newPassword", placeholder="새로운 비밀번호를 입력해주세요")
+            input(type="password", name="newPasswordConfirm", placeholder="새로운 비밀번호를 다시 입력해주세요")
+            input(type="submit" placeholder="프로필 수정하기" value="프로필 수정하기")

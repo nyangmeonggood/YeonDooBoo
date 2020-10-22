@@ -1,0 +1,20 @@
+extends layouts/main.pug
+include mixins/videoBlock
+
+block content
+    .userProfile
+        .header
+            if(user.avatarUrl)
+                img.uAvatar(src=`${user.avatarUrl}`)
+            h4.name=user.name
+            if loggedUser && user.id === loggedUser.id
+                a(href=`/users${routes.editProfile}`) 프로필 수정
+
+        .profileVideos
+            each video in user.videos
+                +videoBlock({
+                    id:video._id,
+                    title:video.title,
+                    views:video.views,
+                    videoFile:`/${video.fileUrl}`,
+                })

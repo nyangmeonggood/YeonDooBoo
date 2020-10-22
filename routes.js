@@ -3,7 +3,8 @@ const HOME = "/",
   SEARCH = "/search",
   JOIN = "/join",
   LOGIN = "/login",
-  LOGOUT = "/logout";
+  LOGOUT = "/logout",
+  MYPAGE = "/mypage";
 
 //user
 const USERS = "/users",
@@ -40,6 +41,7 @@ const routes = {
       return USER_DETAIL;
     }
   },
+  mypage: MYPAGE,
   videos: VIDEOS,
   upload: UPLOAD,
   videoDetail: (id) => {

@@ -12,6 +12,7 @@ import {
 } from "../controller/globalController";
 import routes from "../routes";
 import passport from "passport";
+import { getMe } from "../controller/userController";
 
 const globalRouter = express.Router();
 
@@ -29,6 +30,8 @@ globalRouter.get(
   passport.authenticate("github", { failureRedirect: "/login" }),
   postGithubLogin
 );
+
+globalRouter.get(routes.mypage, getMe);
 
 globalRouter.get(routes.logout, logout);
 
