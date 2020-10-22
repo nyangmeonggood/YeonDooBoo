@@ -23,6 +23,10 @@ const VIDEOS = "/videos",
 const GITHUB = "/auth/github",
   GITHUB_CALLBACK = "/auth/github/callback";
 
+//api
+const API = "/api",
+  REGISTER_VIEW = "/:id/view";
+
 const routes = {
   home: HOME,
   search: SEARCH,
@@ -65,6 +69,8 @@ const routes = {
       return DELETE_VIDEO;
     }
   },
+  api: API,
+  registerView: REGISTER_VIEW,
 };
 
 export default routes;

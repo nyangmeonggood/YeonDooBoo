@@ -14,6 +14,7 @@ import mongoose from "mongoose";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import dotenv from "dotenv";
+import apiRouter from "./router/apiRouter";
 dotenv.config();
 
 const CookieStore = MongoStore(session);
@@ -50,5 +51,6 @@ app.use(localMiddleWare);
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
+app.use(routes.api, apiRouter);
 
 export default app;
